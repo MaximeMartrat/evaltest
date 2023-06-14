@@ -11,7 +11,7 @@ ENV PATH $PATH:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/tools/bin
 
 # Fixer les autorisations du répertoire Flutter
 RUN mkdir -p /opt/flutter
-RUN chown -R flutteruser:flutteruser /opt/flutter
+RUN chown -R 1000:1000 /opt/flutter
 
 # Téléchargez et installez Flutter
 RUN git clone https://github.com/flutter/flutter.git /opt/flutter
