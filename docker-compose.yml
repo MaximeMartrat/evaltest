@@ -24,6 +24,7 @@ services:
   mysql-db:
     image: mysql:latest
     restart: always
+    command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: fondes2023
       MYSQL_DATABASE: evalfondes
@@ -33,3 +34,15 @@ services:
       - 3306:3306
     volumes:
       - ./mysql-data:/var/lib/mysql
+  phpmya:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: pmaeval
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: mysql-db
+      PMA_USER: max
+      PMA_PASSWORD: max2023
+      UPLOAD_LIMIT: 320M
+    ports:
+    - 8898:80
+  
