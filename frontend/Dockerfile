@@ -25,10 +25,6 @@ RUN git clone https://github.com/MaximeMartrat/evaltestfrontend /app
 # Accédez au répertoire du projet
 WORKDIR /app
 
-# Exécutez la compilation du projet Flutter
-USER flutteruser
-RUN flutter build apk
-
 # Créez un nouvel utilisateur pour exécuter Flutter
 RUN adduser --disabled-password --gecos '' flutteruser
 RUN chown -R flutteruser:flutteruser /app
@@ -36,5 +32,6 @@ RUN chown -R flutteruser:flutteruser /app
 # Définissez l'utilisateur nouvellement créé comme utilisateur actif
 USER flutteruser
 
+RUN flutter build apk
 # Exécutez le serveur de développement Flutter
 CMD ["flutter", "run"]
