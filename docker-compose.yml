@@ -1,29 +1,34 @@
 version: "3.3"
 
 services:
-  frontend:
+  flutter-app:
     build:
-      context: ./frontend
+      context: ./flutter-app
       dockerfile: Dockerfile
+    volumes:
+      - ./flutter-app:/app
     ports:
       - 3000:3000
-    volumes:
-      - ./frontend:/app
 
-  backend:
+  python-api:
     build:
-      context: ./backend
+      context: ./python-api
       dockerfile: Dockerfile
-    ports:
-      - 8000:8000
     volumes:
-      - ./backend:/app
+      - ./python-api:/app
+    ports:
+      - 5000:5000
+    depends_on:
+      - mysql-db
 
-  database:
+  mysql-db:
     image: mysql:latest
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: fondes2023
       MYSQL_DATABASE: evalfondes
+      MYSQL_USER: max
+      MYSQL_PASSWORD: max2023
     ports:
       - 3306:3306
     volumes:
