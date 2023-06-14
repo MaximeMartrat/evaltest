@@ -2,7 +2,7 @@
 FROM python:3.11.4
 
 # Clonez votre projet GitHub
-RUN git clone git@github.com:MaximeMartrat/evaltestbackend.git /app
+RUN git clone https://github.com/MaximeMartrat/evaltestfrontend /app
 
 # Accédez au répertoire du projet
 WORKDIR /app

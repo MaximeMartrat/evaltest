@@ -1,8 +1,6 @@
-# Utilisez une image de base Flutter
-FROM ubuntu:latest
+FROM ubuntu:20.10 as builder
+RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget
 
-# Mettez à jour les paquets et installez les dépendances nécessaires
-RUN apt-get update -y && apt-get install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget
 
 # Configurez l'environnement Flutter
 ENV ANDROID_SDK_ROOT /opt/android-sdk
@@ -19,7 +17,7 @@ RUN yes | flutter doctor --android-licenses
 RUN flutter doctor
 
 # Clonez votre projet GitHub
-RUN git clone git@github.com:MaximeMartrat/evaltestfrontend.git /app
+RUN git clone https://github.com/MaximeMartrat/evaltestfrontend /app
 
 # Accédez au répertoire du projet
 WORKDIR /app
