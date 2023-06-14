@@ -1,0 +1,30 @@
+version: "3.3"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/app
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./backend:/app
+
+  database:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: fondes2023
+      MYSQL_DATABASE: evalfondes
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql-data:/var/lib/mysql
