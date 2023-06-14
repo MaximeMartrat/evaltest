@@ -24,7 +24,8 @@ RUN yes | flutter doctor --android-licenses
 RUN flutter doctor
 
 # Clonez votre projet GitHub
-RUN git clone https://github.com/MaximeMartrat/evaltestfrontend /app
+
+RUN git clone https://github.com/MaximeMartrat/evaltest/tree/main/frontend /app
 
 # Accédez au répertoire du projet
 WORKDIR /app
