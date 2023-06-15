@@ -1,15 +1,7 @@
 version: "3.3"
 
 services:
-  flutter-app:
-    build:
-      context: ./flutter-app
-      dockerfile: Dockerfile
-    volumes:
-      - ./flutter-app:/app
-    ports:
-      - 3000:3000
-
+  
   python-api:
     build:
       context: ./python-api
@@ -19,30 +11,34 @@ services:
     ports:
       - 5000:5000
     depends_on:
-      - mysql-db
+      - dbBB
 
-  mysql-db:
-    image: mysql:latest
+  dbBB:
+    image: mysql:5.7
     restart: always
-    command: --default-authentication-plugin=mysql_native_password
     environment:
-      MYSQL_ROOT_PASSWORD: fondes2023
-      MYSQL_DATABASE: evalfondes
-      MYSQL_USER: max
-      MYSQL_PASSWORD: max2023
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
     ports:
-      - 3306:3306
+      - '3306:3306'
+    expose:
+      - '3306'
     volumes:
-      - ./mysql-data:/var/lib/mysql
-  phpmya:
-    image: phpmyadmin/phpmyadmin:latest
-    container_name: pmaeval
-    environment:
-      PMA_ARBITRARY: 1
-      PMA_HOST: mysql-db
-      PMA_USER: max
-      PMA_PASSWORD: max2023
-      UPLOAD_LIMIT: 320M
-    ports:
-    - 8898:80
+      - my-db:/var/lib/mysql
   
+  phpmya:
+      image: phpmyadmin/phpmyadmin:latest
+      container_name: pmafondes
+      environment:
+        PMA_ARBITRARY: 1
+        PMA_HOST: dbBB
+        PMA_USER: 'user'
+        PMA_PASSWORD: password
+        UPLOAD_LIMIT: 320M
+      ports:
+      - 8899:80
+
+volumes:
+  my-db:
