@@ -1,9 +1,9 @@
 from flask import request
+from connectionbdd import connection_params
 import mysql.connector
 import bcrypt
-from connectionbdd import connection_params
-from queries_admin import insert_admin_formateur_false, insert_admin_formateur_true
-from queries_formateur import insert_formateur, get_formateur_id
+import queries_admin
+import queries_formateur
 
 def insertAdmin():
     if request.method == 'POST':
@@ -22,21 +22,21 @@ def insertAdmin():
                 params = (nom, prenom, pseudo, email, telephone, hashed_password, section)
                 if request.form['formateur'] == 'y': 
                     try:
-                        c.execute(insert_formateur, params)
+                        c.execute(queries_formateur.insert_formateur, params)
                         db.commit()
                         params = (nom, prenom)
-                        c.execute(get_formateur_id, params)
+                        c.execute(queries_formateur.get_formateur_id, params)
                         result = c.fetchone()
                         id_formateur = result[0]             
                         params = (nom, prenom, pseudo, email, telephone, hashed_password, id_formateur, section)
-                        c.execute(insert_admin_formateur_true, params)
+                        c.execute(queries_admin.insert_admin_formateur_true, params)
                         db.commit()
                         return 'insertion réussie'
                     except mysql.connector.Error as error:
                         print("Failed to execute query: {}".format(error))
                 else:
                     try:
-                        c.execute(insert_admin_formateur_false, params)
+                        c.execute(queries_admin.insert_admin_formateur_false, params)
                         db.commit()
                         return 'insertion réussie'
                     except mysql.connector.Error as error:
