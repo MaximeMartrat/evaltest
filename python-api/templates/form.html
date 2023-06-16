@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action = "http://localhost:5000/form" method = "POST">
+    <div class="form-group">
+        <label for="firstName">Prenom</label>
+        <input type="text" class="form-control" id="firstNameId" name="firstName" aria-describedby="firstNameHelp" placeholder="James" value="james">
+        <small id="firstNameHelp" class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="lastName">Nom</label>
+        <input type="text" class="form-control" id="lastNameId" name="lastName" aria-describedby="lastNameHelp" placeholder="Dean" value="dean">
+        <small id="lastNameHelp" class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="pseudo">Pseudo</label>
+        <input type="text" class="form-control" id="pseudoId" name="pseudo" aria-describedby="pseudoHelp" placeholder="jami" value="jami">
+        <small id="pseudoHelp" class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="emailAddress">Email Address</label>
+        <input type="text" class="form-control" id="emailAddressId" name="emailAddress" aria-describedby="emailAddressHelp" placeholder="jdean@example.com" value="jdean@example.com">
+        <small id="emailAddressHelp" class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="telephone">Telephone</label>
+        <input type="text" class="form-control" id="telephone" name="telephone" aria-describedby="telephoneHelp" placeholder="0601020304" value="0603020100">
+        <small id="telephoneHelp" class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input type="text" class="form-control" id="password" name="password" aria-describedby="passwordHelp" placeholder="James2023" value="james2023">
+        <small id="passwordHelp" class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="section">Section</label>
+        <select name="section" id="section">
+            <option value="1">BeCare</option>
+            <option value="2">BeGreen</option>
+            <option value="3">Beweb</option>
+            <option value="4">BePro</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="formateur">Est-te vous formateur ?</label>
+        <select name="formateur" id="formateur">
+            <option value="y">oui</option>
+            <option value="n">non</option>
+        </select>
+    </div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+{% endblock %}
