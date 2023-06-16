@@ -32,8 +32,8 @@ def form():
 
         with mysql.connector.connect(**connection_params) as db:
             with db.cursor() as c:
-                if request.form['formateur'] == 'y':
-                    params = (nom, prenom, pseudo, email, telephone, hashed_password, section)
+                params = (nom, prenom, pseudo, email, telephone, hashed_password, section)
+                if request.form['formateur'] == 'y': 
                     try:
                         c.execute(insert_formateur, params)
                         db.commit()
