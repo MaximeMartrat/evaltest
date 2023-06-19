@@ -24,7 +24,7 @@
     }
 </script>
 <div class="form-group">
-    <label for="userType">Choisissez un type d'utilisateur :</label>
+    <label for="userType">Choisissez le role utilisateur :</label>
     <select name="userType" id="userType" onchange="showForm()">
         <option value="admin">Administrateur</option>
         <option value="formateur">Formateur</option>
@@ -74,7 +74,7 @@
     </div>
 
     <div>
-        <label for="formateur">Etes vous formateur ?</label>
+        <label for="formateur">Formateur ?</label>
         <select name="formateur" id="formateur">
             <option value="y">oui</option>
             <option value="n">non</option>
@@ -82,13 +82,150 @@
     </div>
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<form id="formateurForm" style="display: none;" action = "http://localhost:5000/creaAdmin" method = "POST">
-   
+<form id="formateurForm" style="display: none;" action = "http://localhost:5000/creaFormateur" method = "POST">
+    <div class="form-group">
+        <label for="firstName">Prenom</label>
+        <input type="text" class="form-control" name="firstName" aria-describedby="firstNameHelp" placeholder="Jack" value="Jack">
+        <small class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="lastName">Nom</label>
+        <input type="text" class="form-control" name="lastName" aria-describedby="lastNameHelp" placeholder="Sparow" value="Sparow">
+        <small class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="pseudo">Pseudo</label>
+        <input type="text" class="form-control" name="pseudo" aria-describedby="pseudoHelp" placeholder="jacki" value="Jacki">
+        <small id="pseudoHelp" class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="emailAddress">Email Address</label>
+        <input type="email" class="form-control" name="emailAddress" aria-describedby="emailAddressHelp" placeholder="jSparow@example.com" value="jSparow@example.com">
+        <small class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="telephone">Telephone</label>
+        <input type="text" class="form-control" name="telephone" aria-describedby="telephoneHelp" placeholder="0601020305" value="0603020105">
+        <small class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="section">Section</label>
+        <select name="section">
+            <option value="1">BeCare</option>
+            <option value="2">BeGreen</option>
+            <option value="3">Beweb</option>
+            <option value="4">BePro</option>
+        </select>
+    </div>
+	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<form id="apprenantForm" style="display: none;" action = "http://localhost:5000/creaAdmin" method = "POST">
-    
+<form id="apprenantForm" style="display: none;" action = "http://localhost:5000/creaApprenant" method = "POST">
+    <div class="form-group">
+        <label for="firstName">Prenom</label>
+        <input type="text" class="form-control" name="firstName" aria-describedby="firstNameHelp" placeholder="bob" value="Bob">
+        <small class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="lastName">Nom</label>
+        <input type="text" class="form-control" name="lastName" aria-describedby="lastNameHelp" placeholder="L'Eponge" value="L'Eponge">
+        <small class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="pseudo">Pseudo</label>
+        <input type="text" class="form-control" name="pseudo" aria-describedby="pseudoHelp" placeholder="Bobi" value="Bobi">
+        <small id="pseudoHelp" class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+        <label for="address">Addresse</label>
+        <input type="text" class="form-control" name="addresse" aria-describedby="addressHelp" placeholder="28 rue du python 34000 montpellier" value="28 rue du python 34000 montpellier">
+        <small class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+        <label for="rib">Rib</label>
+        <input type="text" class="form-control" name="rib" aria-describedby="ribHelp" placeholder="541570215094252" value="541570215094252">
+        <small class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+        <label for="secu">N° Secu</label>
+        <input type="text" class="form-control" name="secu" aria-describedby="secuHelp" placeholder="d2742953-48d2-3" value="d2742953-48d2-3">
+        <small class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+        <label for="emailAddress">Email Address</label>
+        <input type="email" class="form-control" name="emailAddress" aria-describedby="emailAddressHelp" placeholder="sponge@example.com" value="sponge@example.com">
+        <small class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+        <label for="telephone">Telephone</label>
+        <input type="text" class="form-control" name="telephone" aria-describedby="telephoneHelp" placeholder="0601020310" value="0603020110">
+        <small class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+        <label for="formation">Formation</label>
+        <select name="section">
+            <option value="1">User-friendly zerodefect synergy
+            </option>
+            <option value="2">De-engineered neutral array</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="section">Section</label>
+        <select name="section">
+            <option value="1">BeCare</option>
+            <option value="2">BeGreen</option>
+            <option value="3">Beweb</option>
+            <option value="4">BePro</option>
+        </select>
+    </div>
+	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<form id="salarieForm" style="display: none;" action = "http://localhost:5000/creaAdmin" method = "POST">
-    
+<form id="salarieForm" style="display: none;" action = "http://localhost:5000/creaSalarie" method = "POST">
+    <div class="form-group">
+        <label for="firstName">Prenom</label>
+        <input type="text" class="form-control" name="firstName" aria-describedby="firstNameHelp" placeholder="Bart" value="Bart">
+        <small class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="lastName">Nom</label>
+        <input type="text" class="form-control" name="lastName" aria-describedby="lastNameHelp" placeholder="Simpson" value="Simpson">
+        <small class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="pseudo">Pseudo</label>
+        <input type="text" class="form-control" name="pseudo" aria-describedby="pseudoHelp" placeholder="BS" value="BS">
+        <small id="pseudoHelp" class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="emailAddress">Email Address</label>
+        <input type="email" class="form-control" name="emailAddress" aria-describedby="emailAddressHelp" placeholder="bsimp@example.com" value="bsimp@example.com">
+        <small class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="telephone">Telephone</label>
+        <input type="text" class="form-control" name="telephone" aria-describedby="telephoneHelp" placeholder="0601020315" value="0603020115">
+        <small class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="section">Section</label>
+        <select name="section">
+            <option value="1">BeCare</option>
+            <option value="2">BeGreen</option>
+            <option value="3">Beweb</option>
+            <option value="4">BePro</option>
+        </select>
+    </div>
+	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
 {% endblock %}

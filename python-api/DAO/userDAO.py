@@ -37,3 +37,22 @@ def insertAdmin():
                         return 'insertion réussie'
                     except mysql.connector.Error as error:
                         print("Failed to execute query: {}".format(error))
+
+def insertFormateur():
+    if request.method == 'POST':
+        nom = request.form['firstName']
+        prenom = request.form['lastName']
+        pseudo = request.form['pseudo']
+        email = request.form['emailAddress']
+        telephone = request.form['telephone']
+        section = request.form['section']
+
+        with mysql.connector.connect(**connection_params) as db:
+            with db.cursor() as c:
+                params = (nom, prenom, pseudo, email, telephone, section)
+                try:
+                    c.execute(queries_formateur.insert_formateur, params)
+                    db.commit()
+                    return 'insertion réussie'
+                except mysql.connector.Error as error:
+                    print("Failed to execute query: {}".format(error))

@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session
-from DAO.adminDAO import insertAdmin
 from DAO.loginDAO import verifyLog
+import DAO.userDAO
 import DAO.generalDAO
 import valide_token
 
@@ -31,8 +31,14 @@ def post():
 @app.route('/creaAdmin', methods=['GET', 'POST'])
 def form():
     if request.method == 'POST':
-        insertAdmin()
+        DAO.userDAO.insertAdmin()
         return render_template('accueil.html', message='Admin créé !')
+
+@app.route('/creaFormateur', methods=['POST'])
+def form2():
+    if request.method == 'POST':
+        DAO.userDAO.insertFormateur()
+        return render_template('accueil.html', message='Formateur créé !')
 
 @app.route('/login')
 def log():
