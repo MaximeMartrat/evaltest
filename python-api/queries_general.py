@@ -6,19 +6,9 @@ select_table = "SELECT 'administrateur' AS table_name, pseudoAdmin AS pseudo FRO
 
 
 update_password_admin = "UPDATE administrateur SET passwordAdmin = %(hashed_password)s WHERE pseudoAdmin = %(pseudo)s;"
-
 update_password_formateur = "UPDATE formateur SET passwordFormateur = %(hashed_password)s WHERE pseudoFormateur = %(pseudo)s;"
-
 update_password_salarie = "UPDATE salarie SET passwordSalarie = %(hashed_password)s WHERE pseudoSalarie = %(pseudo)s;"
-
 update_password_apprenant = "UPDATE apprenant SET passwordApprenant = %(hashed_password)s WHERE pseudoApprenant = %(pseudo)s;"
 
-update_admin_token = "UPDATE administrateur SET token = %(token)s WHERE pseudoAdmin = %(pseudo)s;"
-update_formateur_token = "UPDATE formateur SET token = %(token)s WHERE pseudoFormateur = %(pseudo)s;"
-update_salarie_token = "UPDATE salarie SET token = %(token)s WHERE pseudoSalarie = %(pseudo)s;"
-update_apprenant_token = "UPDATE apprenant SET token = %(token)s WHERE pseudoApprenant = %(pseudo)s;"
 
-# get_admin_token = "SELECT token FROM administrateur WHERE pseudoAdmin = %(pseudo)s;"
-# get_formateur_token = "SELECT token FROM administrateur WHERE pseudoAdmin = %(pseudo)s;"
-# get_salarie_token = "SELECT token FROM administrateur WHERE pseudoAdmin = %(pseudo)s;"
-# get_apprenant_token = "SELECT token FROM administrateur WHERE pseudoAdmin = %(pseudo)s;"
+
