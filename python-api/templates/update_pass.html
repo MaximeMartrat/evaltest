@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action = "http://localhost:5000/updatePassword" method = "POST" onsubmit="return checkPasswords()">
+    <div class="form-group">
+        <label for="pseudo">Pseudo</label>
+        <input type="text" class="form-control" id="pseudoId" name="pseudo" aria-describedby="pseudoHelp" value="jami">
+        <small id="pseudoHelp" class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" value="james2023">
+        <small id="passwordHelp" class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+        <label for="password">Confirmer le mot de passe</label>
+        <input type="password" class="form-control" id="password2" name="password2" aria-describedby="passwordConfirmHelp" value="james2023">
+        <small id="passwordConfirmHelp" class="form-text text-muted"></small>
+    </div>
+
+    <button type="submit" class="btn btn-primary">OK</button>
+</form>
+
+<h3>Première visite ? <a href="/updatePass">créer mot de passe</a></h3>
+
+<script>
+    function checkPasswords() {
+        var password1 = document.getElementById("password").value;
+        var password2 = document.getElementById("password2").value;
+
+        if (password1 !== password2) {
+            alert("Les mots de passe ne correspondent pas.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+{% endblock %}

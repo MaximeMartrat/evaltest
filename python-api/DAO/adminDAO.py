@@ -1,7 +1,6 @@
 from flask import request
 from connectionbdd import connection_params
 import mysql.connector
-import bcrypt
 import queries_admin
 import queries_formateur
 
@@ -12,14 +11,11 @@ def insertAdmin():
         pseudo = request.form['pseudo']
         email = request.form['emailAddress']
         telephone = request.form['telephone']
-        password = request.form['password']
         section = request.form['section']
-
-        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
         with mysql.connector.connect(**connection_params) as db:
             with db.cursor() as c:
-                params = (nom, prenom, pseudo, email, telephone, hashed_password, section)
+                params = (nom, prenom, pseudo, email, telephone, section)
                 if request.form['formateur'] == 'y': 
                     try:
                         c.execute(queries_formateur.insert_formateur, params)
@@ -28,7 +24,7 @@ def insertAdmin():
                         c.execute(queries_formateur.get_formateur_id, params)
                         result = c.fetchone()
                         id_formateur = result[0]             
-                        params = (nom, prenom, pseudo, email, telephone, hashed_password, id_formateur, section)
+                        params = (nom, prenom, pseudo, email, telephone, id_formateur, section)
                         c.execute(queries_admin.insert_admin_formateur_true, params)
                         db.commit()
                         return 'insertion réussie'

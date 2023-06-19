@@ -1,7 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form action = "http://localhost:5000/form" method = "POST">
+<script>
+    function showForm() {
+        var selectValue = document.getElementById("userType").value;
+
+        // Masquer tous les formulaires
+        document.getElementById("adminForm").style.display = "none";
+        document.getElementById("formateurForm").style.display = "none";
+        document.getElementById("apprenantForm").style.display = "none";
+        document.getElementById("salarieForm").style.display = "none";
+
+        // Afficher le formulaire correspondant à l'option sélectionnée
+        if (selectValue === "admin") {
+            document.getElementById("adminForm").style.display = "block";
+        } else if (selectValue === "formateur") {
+            document.getElementById("formateurForm").style.display = "block";
+        } else if (selectValue === "apprenant") {
+            document.getElementById("apprenantForm").style.display = "block";
+        } else if (selectValue === "salarie") {
+            document.getElementById("salarieForm").style.display = "block";
+        }
+    }
+</script>
+<div class="form-group">
+    <label for="userType">Choisissez un type d'utilisateur :</label>
+    <select name="userType" id="userType" onchange="showForm()">
+        <option value="admin">Administrateur</option>
+        <option value="formateur">Formateur</option>
+        <option value="apprenant">Apprenant</option>
+        <option value="salarie">Salarié</option>
+    </select>
+</div>
+<form id="adminForm" style="display: none;" action = "http://localhost:5000/creaAdmin" method = "POST">
     <div class="form-group">
         <label for="firstName">Prenom</label>
         <input type="text" class="form-control" id="firstNameId" name="firstName" aria-describedby="firstNameHelp" placeholder="James" value="james">
@@ -33,12 +64,6 @@
     </div>
 
     <div class="form-group">
-        <label for="password">Mot de passe</label>
-        <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" placeholder="James2023" value="james2023">
-        <small id="passwordHelp" class="form-text text-muted"></small>
-    </div>
-
-    <div class="form-group">
         <label for="section">Section</label>
         <select name="section" id="section">
             <option value="1">BeCare</option>
@@ -56,6 +81,14 @@
         </select>
     </div>
 	<button type="submit" class="btn btn-primary">Submit</button>
-
+</form>
+<form id="formateurForm" style="display: none;" action = "http://localhost:5000/creaAdmin" method = "POST">
+   
+</form>
+<form id="apprenantForm" style="display: none;" action = "http://localhost:5000/creaAdmin" method = "POST">
+    
+</form>
+<form id="salarieForm" style="display: none;" action = "http://localhost:5000/creaAdmin" method = "POST">
+    
 </form>
 {% endblock %}

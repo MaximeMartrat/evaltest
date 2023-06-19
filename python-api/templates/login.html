@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action = "http://localhost:5000/verifyLogin" method = "GET">
+    <div class="form-group">
+        <label for="pseudo">Pseudo</label>
+        <input type="text" class="form-control" id="pseudoId" name="pseudo" aria-describedby="pseudoHelp" placeholder="jami" value="jami">
+        <small id="pseudoHelp" class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" placeholder="James2023" value="james2023">
+        <small id="passwordHelp" class="form-text text-muted"></small>
+    </div>
+    <button type="submit" class="btn btn-primary">OK</button>
+</form>
+
+<h2>Première visite ? <a href="/updatePass">créer mot de passe</a></h2>
+{% endblock %}
