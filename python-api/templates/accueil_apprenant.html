@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>EVAL FONDESPIERRE</h1>
+
+<h1>{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class="flash-messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}</h1>
+<h1>{{ alerte }}</h1>
+
+<nav>
+    <ul>
+        <li><a href="/accueil">ACCUEIL</a></li>
+        <li>MON PROFIL</li>
+        <li>ACTIVITE TYPE 1</li>
+        <li>ACTIVITE TYPE 2</li>
+        <li>...</li>
+    </ul>
+</nav>
+<h3><a href="/logout">Deconnexion</a></h3>
+{% endblock %} 

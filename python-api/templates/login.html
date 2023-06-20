@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h1>{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class="flash-messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}</h1>
 
 <form action = "http://localhost:5000/verifyLogin" method = "GET">
     <div class="form-group">
