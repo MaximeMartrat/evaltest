@@ -1,0 +1,1 @@
+insert_apprenant = "INSERT INTO apprenant (nomApprenant, prenomApprenant, pseudoApprenant, adresseApprenant, ribApprenant, secuApprenant, emailApprenant, telephoneApprenant, id_formation_FK, id_section_FK) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
