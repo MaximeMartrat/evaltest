@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, session
-from DAO.loginDAO import verifyLog
-import DAO.userDAO
-import DAO.generalDAO
-import valide_token
+from controller.login import verifyLog
+import controller.user
+import controller.general
+import controller.valide_token
 
 app = Flask(__name__)
 app.secret_key = 'fondes2023'
@@ -20,7 +20,7 @@ def logout():
 
 @app.route('/create')
 def post():
-    if valide_token.has_valid_token():
+    if controller.valide_token.has_valid_token():
         # L'utilisateur est authentifié, permettre l'accès à la page
         return render_template('creation.html')
     else:
@@ -31,26 +31,26 @@ def post():
 @app.route('/creaAdmin', methods=['GET', 'POST'])
 def form():
     if request.method == 'POST':
-        DAO.userDAO.insertAdmin()
+        controller.user.insertAdmin()
         return render_template('accueil.html', message='Admin créé !')
 
 @app.route('/creaFormateur', methods=['POST'])
 def form2():
     if request.method == 'POST':
-        DAO.userDAO.insertFormateur()
+        controller.user.insertFormateur()
         return render_template('accueil.html', message='Formateur créé !')
 
 
 @app.route('/creaApprenant', methods=['POST'])
 def form3():
     if request.method == 'POST':
-        DAO.userDAO.insertApprenant()
+        controller.user.insertApprenant()
         return render_template('accueil.html', message='Apprenant créé !')
 
 @app.route('/creaSalarie', methods=['POST'])
 def form4():
     if request.method == 'POST':
-        DAO.userDAO.insertSalarie()
+        controller.user.insertSalarie()
         return render_template('accueil.html', message='Salarie créé !')
 
 @app.route('/login')
@@ -72,8 +72,8 @@ def updatePass():
 @app.route('/updatePassword', methods=['POST'])
 def updatePassword():
     if request.method == 'POST':
-         message = DAO.generalDAO.updateThisPassword(request.method)
-         DAO.generalDAO.updateThisPassword(request.method)
+         message = controller.general.updateThisPassword(request.method)
+         controller.general.updateThisPassword(request.method)
          return render_template('accueil.html', message=message)
 
 if __name__ == '__main__':

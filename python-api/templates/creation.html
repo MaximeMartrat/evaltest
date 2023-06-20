@@ -12,7 +12,7 @@
         document.getElementById("salarieForm").style.display = "none";
 
         // Afficher le formulaire correspondant à l'option sélectionnée
-        if (selectValue === "admin") {
+        if (selectValue === "administrateur") {
             document.getElementById("adminForm").style.display = "block";
         } else if (selectValue === "formateur") {
             document.getElementById("formateurForm").style.display = "block";
@@ -26,13 +26,16 @@
 <div class="form-group">
     <label for="userType">Choisissez le role utilisateur :</label>
     <select name="userType" id="userType" onchange="showForm()">
-        <option value="admin">Administrateur</option>
+        <option value="administrateur">Administrateur</option>
         <option value="formateur">Formateur</option>
         <option value="apprenant">Apprenant</option>
         <option value="salarie">Salarié</option>
     </select>
 </div>
 <form id="adminForm" style="display: none;" action = "http://localhost:5000/creaAdmin" method = "POST">
+    <div class="form-group">
+        <input type="hidden" name="role" value="administrateur">
+    </div>
     <div class="form-group">
         <label for="firstName">Prenom</label>
         <input type="text" class="form-control" id="firstNameId" name="firstName" aria-describedby="firstNameHelp" placeholder="James" value="james">
@@ -84,6 +87,9 @@
 </form>
 <form id="formateurForm" style="display: none;" action = "http://localhost:5000/creaFormateur" method = "POST">
     <div class="form-group">
+        <input type="hidden" name="role" value="formateur">
+    </div>
+    <div class="form-group">
         <label for="firstName">Prenom</label>
         <input type="text" class="form-control" name="firstName" aria-describedby="firstNameHelp" placeholder="Jack" value="Jack">
         <small class="form-text text-muted"></small>
@@ -125,6 +131,9 @@
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
 <form id="apprenantForm" style="display: none;" action = "http://localhost:5000/creaApprenant" method = "POST">
+    <div class="form-group">
+        <input type="hidden" name="role" value="apprenant">
+    </div>
     <div class="form-group">
         <label for="firstName">Prenom</label>
         <input type="text" class="form-control" name="firstName" aria-describedby="firstNameHelp" placeholder="bob" value="Bob">
@@ -187,6 +196,9 @@
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
 <form id="salarieForm" style="display: none;" action = "http://localhost:5000/creaSalarie" method = "POST">
+    <div class="form-group">
+        <input type="hidden" name="role" value="salarie">
+    </div>
     <div class="form-group">
         <label for="firstName">Prenom</label>
         <input type="text" class="form-control" name="firstName" aria-describedby="firstNameHelp" placeholder="Bart" value="Bart">
