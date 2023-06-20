@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, session
 from controller.login import verifyLog
 import controller.user
-import controller.general
+import controller.password_add
 import controller.valide_token
 
 app = Flask(__name__)
@@ -73,7 +73,7 @@ def updatePass():
 def updatePassword():
     if request.method == 'POST':
          message = controller.general.updateThisPassword(request.method)
-         controller.general.updateThisPassword(request.method)
+         controller.password_add.updateThisPassword(request.method)
          return render_template('accueil.html', message=message)
 
 if __name__ == '__main__':
