@@ -40,6 +40,19 @@ def form2():
         DAO.userDAO.insertFormateur()
         return render_template('accueil.html', message='Formateur créé !')
 
+
+@app.route('/creaApprenant', methods=['POST'])
+def form3():
+    if request.method == 'POST':
+        DAO.userDAO.insertApprenant()
+        return render_template('accueil.html', message='Apprenant créé !')
+
+@app.route('/creaSalarie', methods=['POST'])
+def form4():
+    if request.method == 'POST':
+        DAO.userDAO.insertSalarie()
+        return render_template('accueil.html', message='Salarie créé !')
+
 @app.route('/login')
 def log():
      return render_template('login.html')
